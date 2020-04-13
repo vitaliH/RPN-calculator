@@ -13,7 +13,7 @@ Stack is the best option as data structure to operation on top of all data conta
 # Trade-offs 
 It should be implemented web version of the project with a nice UI and tutorial for users how to use RPN calculator.
 
-# Run Instructions: 
+# Run Instructions 
 * Download project
 * In case of command line running :
 1. enter project folder 
