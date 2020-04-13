@@ -1,7 +1,7 @@
 package com.rpn.client.impl;
 
 import com.rpn.calculator.RPNCalculator;
-import com.rpn.client.RPNClient;
+import com.rpn.client.RPNCalculatorClient;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import javax.naming.OperationNotSupportedException;
@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class CommandLineRunner implements RPNClient {
+public class CommandLineRunner implements RPNCalculatorClient {
     private static final String COMMAND_EXTRACTOR_REGEX = "\\s+";
     private static final String CLEAR_STACK_COMMAND = "clear";
     private static final String STOP_APPLICATION_COMMAND = "q";
