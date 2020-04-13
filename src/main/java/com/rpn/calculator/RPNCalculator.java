@@ -5,7 +5,7 @@ import javax.naming.OperationNotSupportedException;
 import java.util.Stack;
 
 public class RPNCalculator {
-    private final Calculator calculator = new Calculator();
+    private Calculator calculator = new Calculator();
     private Stack<String> calculationData;
 
     public RPNCalculator(Stack<String> calculationData) {
