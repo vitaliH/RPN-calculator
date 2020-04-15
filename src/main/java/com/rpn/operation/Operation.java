@@ -1,5 +1,8 @@
 package com.rpn.operation;
 
+import java.math.BigDecimal;
+
 public interface Operation {
-    double execute(double firstValue, double secondValue);
+
+    BigDecimal execute(BigDecimal firstValue, BigDecimal secondValue);
 }

@@ -2,6 +2,7 @@ package com.rpn.calculator;
 
 
 import javax.naming.OperationNotSupportedException;
+import java.math.BigDecimal;
 import java.util.Stack;
 
 public class RPNCalculator {
@@ -12,15 +13,15 @@ public class RPNCalculator {
         this.calculationData = calculationData;
     }
 
-    public Double calculate() throws OperationNotSupportedException {
+    public BigDecimal calculate() throws OperationNotSupportedException {
         String operation = calculationData.pop();
-        double firstValue, secondValue;
-        double result = Double.parseDouble(calculationData.firstElement());
+        BigDecimal firstValue, secondValue;
+        BigDecimal result = BigDecimal.valueOf(Double.parseDouble(calculationData.firstElement()));
         calculationData.remove(calculationData.firstElement());
 
         while (!calculationData.isEmpty()) {
             firstValue = result;
-            secondValue = Double.parseDouble(calculationData.firstElement());
+            secondValue = BigDecimal.valueOf(Double.parseDouble(calculationData.firstElement()));
             calculationData.remove(calculationData.firstElement());
             result = calculator.calculate(operation, firstValue, secondValue);
         }

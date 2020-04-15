@@ -5,6 +5,7 @@ import com.rpn.client.RPNCalculatorClient;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import javax.naming.OperationNotSupportedException;
+import java.math.BigDecimal;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.Stack;
@@ -49,9 +50,9 @@ public class CommandLineRunner implements RPNCalculatorClient {
                     if (calculatorStack.size() >= 3) {
                         if (!NumberUtils.isParsable(calculatorStack.peek())
                                 && rpnCalculator.isOperationSupported(calculatorStack.peek())) {
-                            Double result = rpnCalculator.calculate();
+                            BigDecimal result = rpnCalculator.calculate();
                             calculatorStack.push(String.valueOf(result));
-                            if (result % 1 == 0) {
+                            if (result.doubleValue() % 1 == 0) {
                                 System.out.println(result.intValue());
                             } else {
                                 System.out.println(result);

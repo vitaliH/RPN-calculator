@@ -4,6 +4,7 @@ package com.rpn.calculator;
 import com.rpn.operation.*;
 
 import javax.naming.OperationNotSupportedException;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -24,7 +25,7 @@ public class Calculator {
         return operationMap;
     }
 
-    public Double calculate(String operation, Double firstOperand, Double secondOperand) throws OperationNotSupportedException {
+    public BigDecimal calculate(String operation, BigDecimal firstOperand, BigDecimal secondOperand) throws OperationNotSupportedException {
         Operation desiredOperation = Optional.ofNullable(operations.get(operation))
                 .orElseThrow(() -> new OperationNotSupportedException());
 
