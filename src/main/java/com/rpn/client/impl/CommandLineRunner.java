@@ -33,7 +33,7 @@ public class CommandLineRunner implements RPNCalculatorClient {
         try {
             while (true) {
                 System.out.print(">");
-                String[] commands = scanner.nextLine().split(COMMAND_EXTRACTOR_REGEX);
+                String[] commands = scanner.nextLine().trim().split(COMMAND_EXTRACTOR_REGEX);
 
                 for (String command : commands) {
                     if (command.equalsIgnoreCase(CLEAR_STACK_COMMAND)) {
@@ -48,8 +48,7 @@ public class CommandLineRunner implements RPNCalculatorClient {
                     }
 
                     if (calculatorStack.size() >= 3) {
-                        if (!NumberUtils.isParsable(calculatorStack.peek())
-                                && rpnCalculator.isOperationSupported(calculatorStack.peek())) {
+                        if (!NumberUtils.isParsable(calculatorStack.peek()) && rpnCalculator.isOperationSupported(calculatorStack.peek())) {
                             BigDecimal result = rpnCalculator.calculate();
                             calculatorStack.push(String.valueOf(result));
                             if (result.doubleValue() % 1 == 0) {
