@@ -39,9 +39,11 @@ public class CommandLineRunner implements RPNCalculatorClient {
                         calculatorStack.removeAllElements();
                     } else if (command.equalsIgnoreCase(STOP_APPLICATION_COMMAND)) {
                         System.exit(STATUS);
-                    } else if (!command.isEmpty()) {
+                    } else if (!command.isEmpty() && (NumberUtils.isParsable(command) || rpnCalculator.isOperationSupported(command))) {
                         calculatorStack.push(command);
                         System.out.println(command);
+                    } else {
+                        System.out.println("Not valid input! Only numbers and next operations: `+`, `-`, `/`, `*`");
                     }
 
                     if (calculatorStack.size() >= 3) {
@@ -49,7 +51,11 @@ public class CommandLineRunner implements RPNCalculatorClient {
                                 && rpnCalculator.isOperationSupported(calculatorStack.peek())) {
                             Double result = rpnCalculator.calculate();
                             calculatorStack.push(String.valueOf(result));
-                            System.out.println("\n" + result);
+                            if (result % 1 == 0) {
+                                System.out.println(result.intValue());
+                            } else {
+                                System.out.println(result);
+                            }
                         }
                     }
                 }

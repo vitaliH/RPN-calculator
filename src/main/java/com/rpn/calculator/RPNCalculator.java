@@ -15,13 +15,16 @@ public class RPNCalculator {
     public Double calculate() throws OperationNotSupportedException {
         String operation = calculationData.pop();
         double firstValue, secondValue;
-        double result = Double.parseDouble(calculationData.pop());
+        double result = Double.parseDouble(calculationData.firstElement());
+        calculationData.remove(calculationData.firstElement());
 
         while (!calculationData.isEmpty()) {
             firstValue = result;
-            secondValue = Double.parseDouble(calculationData.pop());
+            secondValue = Double.parseDouble(calculationData.firstElement());
+            calculationData.remove(calculationData.firstElement());
             result = calculator.calculate(operation, firstValue, secondValue);
         }
+
         return result;
     }
 
